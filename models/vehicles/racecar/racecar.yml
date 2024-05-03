@@ -49,12 +49,12 @@ sensors:
 
   - type: lidar
     name: lidar
-    frequency: 25
+    frequency: 40
     params:
       accuracy: 0.03 # maximum deviation from true scan range (percentage)
       rays: 1080
-      range: 15.0
-      min_range: 0.25
+      range: 10.0
+      min_range: 0.1
       angle_start: -2.36
       angle: 4.71
       debug: False

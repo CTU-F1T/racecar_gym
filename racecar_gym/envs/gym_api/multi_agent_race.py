@@ -10,10 +10,11 @@ from racecar_gym.core.definitions import Pose
 class MultiAgentRaceEnv(gymnasium.Env):
 
     metadata = {
-        'render_modes': ['human', 'rgb_array_follow', 'rgb_array_birds_eye', 'rgb_array_lidar']
+        'render_modes': ['human', 'rgb_array_follow', 'rgb_array_birds_eye', 'rgb_array_lidar', None]
     }
 
     def __init__(self, scenario: str, render_mode: str = 'human', render_options: Dict = None):
+        print("INIT MULTI AGENT RACE ENV: \n", render_mode, render_options)
         self._scenario = MultiAgentScenario.from_spec(scenario, rendering=render_mode == 'human')
         self._initialized = False
         assert render_mode in self.metadata['render_modes'], f'Invalid render mode: {render_mode}'
@@ -84,6 +85,9 @@ class MultiAgentRaceEnv(gymnasium.Env):
         return observations, state
 
     def render(self):
+        if self._render_mode is None:
+            return
+
         if self._render_mode == 'human':
             return None
         else:
