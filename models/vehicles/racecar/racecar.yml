@@ -5,7 +5,7 @@ actuators:
     name: steering
     params:
       steering_multiplier: 0.5
-      max_steering_angle: 0.42
+      max_steering_angle: 0.35
   - type: motor
     name: motor
     params:
